@@ -5,6 +5,7 @@
 #' @param phy Phylo object
 #' @param width.scaling How wide to make each branch relative to program defaults
 #' @param new.window Should we open a new plotting window?
+#' @export
 #' @examples
 #' phy <- ape::rcoal(10)
 Plot3DTree <- function(phy,width.scaling=1, new.window=TRUE) {
