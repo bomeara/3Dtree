@@ -1,0 +1,10 @@
+Package: 3Dtree
+Type: Package
+Title: Creates a 3D tree
+Version: 1.0
+Date: 2019-07-24
+Author: Brian O'Meara
+Maintainer: Brian O'Meara <omeara.brian@gmail.com>
+Description: This takes a phylo object and makes a 3D plot using RGL. This can exported to STL format, too.
+License: GPL 3.0
+RoxygenNote: 6.1.1
