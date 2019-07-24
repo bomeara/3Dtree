@@ -22,12 +22,19 @@ Plot3DTree <- function(phy,width.scaling=1, new.window=TRUE) {
   for (edge.index in sequence(nrow(phy$edge))) {
       end.node <- phy$edge[edge.index, 2]
       start.node <- phy$edge[edge.index, 1]
-      start.point <- c(allx[start.node], ally[start.node], phytools::nodeheight(phy,start.node))
-      end.point <- c(allx[end.node], ally[end.node], phytools::nodeheight(phy,end.node))
-      coordinates <- rbind(start.point, end.point)
-      colnames(coordinates) <- c('x', 'y', 'z')
-      try(rgl::shade3d(rgl::addNormals(rgl::subdivision3d(rgl::cylinder3d(rbind(start.point, end.point), radius=width, sides=8, twist=1, closed=-2), depth=2)), col="gray"))
-      print(coordinates)
+      start.point.horizontal <- c(allx[start.node], ally[start.node], phytools::nodeheight(phy,start.node))
+      end.point.horizontal <-  c(allx[end.node], ally[end.node], phytools::nodeheight(phy,start.node))
+      start.point.vertical <- end.point.horizontal
+      end.point.vertical <- c(allx[end.node], ally[end.node], phytools::nodeheight(phy,end.node))
+      coordinates.horizontal <- rbind(start.point.horizontal, end.point.horizontal)
+      coordinates.vertical <- rbind(start.point.vertical, end.point.vertical)
+
+      colnames(coordinates.horizontal) <- c('x', 'y', 'z')
+      colnames(coordinates.vertical) <- c('x', 'y', 'z')
+      try(rgl::shade3d(rgl::addNormals(rgl::subdivision3d(rgl::cylinder3d(coordinates.horizontal, radius=width, sides=8, twist=1, closed=-2), depth=2)), col="gray"))
+      try(rgl::shade3d(rgl::addNormals(rgl::subdivision3d(rgl::cylinder3d(coordinates.vertical, radius=width, sides=8, twist=1, closed=-2), depth=2)), col="gray"))
+
+      #print(coordinates)
       #rgl::lines3d(coordinates)
   }
 }
