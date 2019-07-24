@@ -9,3 +9,8 @@ Description: This takes a phylo object and makes a 3D plot using RGL. This can e
 License: GPL 3.0
 RoxygenNote: 6.1.1
 Encoding: UTF-8
+Imports:
+  phytools,
+  ape,
+  rgl,
+  geiger
